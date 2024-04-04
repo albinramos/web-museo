@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="iconos/style.css">
+    <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css">
+    <link rel="stylesheet" href="css/styles.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script> <!-- Este fichero va siempre debajo de los CSS porque van a modificarlo -->
+    <script src="https://code.jquery.com/ui/1.13.1/jquery-ui.min.js" integrity="sha256-eTyxS0rkjpLEo16uXTS0uVCS4815lc40K2iVpWDvdSY=" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-migrate-3.3.0.min.js" integrity="sha256-wZ3vNXakH9k4P00fNGAlbN0PkpKSyhRa76IFy4V1PYE=" crossorigin="anonymous"></script>
+    <script src="js/prog.js"></script>
+</head>
+<header>
+    <a href="index.html" id="titulo">ArtFinder</a>
+    <div id="iconos-hamburguesa">
+        <span class="icon-menu"></span>
+        <span class='icon-cancel'></span>
+    </div>
+    <a href="login.php" id="usuario"><i class='bx bx-user-circle'></i></a>
+</header>
+<nav>
+    <ul class="navsumario">
+        <li class="linav"><a href="index.html" class="navapartados">INICIO</a></li>
+        <li class="linav"><a href="buscar.html" class="navapartados">ARTFINDER</a></li>
+        <li class="linav"><a href="#" class="navapartados">SOBRE NOSOTROS</a></li>
+        <li class="linav"><a href="#" class="navapartados">CONTACTO</a></li>
+    </ul>
+</nav>
+<body>
+    <script>
+        $(document).ready(function()
+        {
+            $('#buscar').keyup(function()
+            {
+                /* CON ESTE EMPTY LIMPIO LA PANTALLA DEL CLICK UNA VEZ ESCRIBA ALGO NUEVO */
+                $('.todoobras').empty()
+                /* val es solamente para recoger valores de cajas */
+            var info=$('#buscar').val()
+            if(info!='')
+            {
+                $.ajax(
+                {
+                    type:"post",
+                    url:"./BBDD/ajax/r_keyup_buscar_ajax.php",
+                    data:{recogida:info},
+                    success:function(htmlphp)
+                    {
+                        $('.parecidos').html(htmlphp)
+                    }
+                })
+            }
+            else
+            {
+                $('.parecidos').html('')
+
+            }
+            })
+            /* voy a llamar al LI dando la responsabilidad al padre, ya que ese LI no existe en el HTML y para llegar a el tengo que hacerlo así. El document ready va en funcion del html, puedo darles eventos a los que estan en el html, por eso para llegar al li tengo que llegar mediante su padre. SE DENOMINA EVENTO DELEGAR. UL parecidos como padre de li se va a ocupar del click*/
+            $('.parecidos').on("click",'li',function()
+            {
+                /* CON ESTE EMPTY LIMPIO LA PANTALLA DEL KEYUP */
+                $('.parecidos').empty()
+                var id_obra=$(this).children('p.datos').data('id_obra')
+               
+                $.ajax(
+                {
+                    type:"post",
+                    url:"./BBDD/ajax/r_click_buscar_ajax.php",
+                    data:{mandoid:id_obra},
+                    success:function(datosobras)
+                    {
+                        $('.todoobras').html(datosobras)
+                        $('#buscar').val('')
+                    }
+                })
+            })
+
+            $('.gallery-img').on("click",'li',function()
+            {
+                /* CON ESTE EMPTY LIMPIO LA PANTALLA DEL KEYUP */
+                var id_museo=$(this).children('p.datos').data('id_museo')
+               
+                $.ajax(
+                {
+                    type:"post",
+                    url:"./BBDD/ajax/p_click_buscar_obras_por_museo.php",
+                    data:{mandoid:id_museo},
+                    success:function(obrasmuseo)
+                    {
+                        $('.gallery-img').html(obrasmuseo)
+                    }
+                })
+            })
+        })
+    </script>
+    <div class="container">
+        <div class="search-box">
+            <i class="bx bx-search"></i>
+            <input type="text" placeholder="Buscador de obras de arte" id="buscar">
+        </div>
+        
+    </div>
+    <ul class="parecidos"></ul>
+    <ul class="todoobras"></ul>
+    <ul class="obras_museo"></ul>
+    <div class="gallery-container">
+        <div class="gallery_item">
+            <img src="imgs/louvre_horizontal.jpg" alt="" class="gallery_img">
+            <div class="gallery_container">
+            <h2 class="gallery_title"><a href="BBDD/ajax/p_click_buscar_obras_por_museo.php?mandoid=32" id="amuseos">LOUVRE</a></h2>
+            </div>
+        </div>
+        <div class="gallery_item">
+            <img src="imgs/galeria_vertical.jpeg" alt="" class="gallery_img">
+            <h2 class="gallery_title"><a href="BBDD/ajax/p_click_buscar_obras_por_museo.php?mandoid=33" id="amuseos">REINA SOFIA</a></h2>
+        </div>
+        <div class="gallery_item">
+            <img src="imgs/galeria_horizontal.jpeg" alt="" class="gallery_img">
+            <h2 class="gallery_title"><a href="BBDD/ajax/p_click_buscar_obras_por_museo.php?mandoid=34" id="amuseos">HERMITAGE</a></h2>
+        </div>
+        <div class="gallery_item">
+            <img src="imgs/rijksmuseum.jpg" alt="" class="gallery_img">
+            <h2 class="gallery_title"><a href="BBDD/ajax/p_click_buscar_obras_por_museo.php?mandoid=40" id="amuseos">RIJKSMUSEUM</a></h2>
+        </div>
+        <div class="gallery_item">
+            <img src="imgs/museo_del_prado.jpg" alt="" class="gallery_img">
+            <h2 class="gallery_title"><a href="BBDD/ajax/p_click_buscar_obras_por_museo.php?mandoid=35" id="amuseos">MUSEO DEL PRADO</a></h2>
+        </div>
+        <div class="gallery_item">
+            <img src="imgs/national_gallery.jpg" alt="" class="gallery_img">
+            <h2 class="gallery_title"><a href="BBDD/ajax/p_click_buscar_obras_por_museo.php?mandoid=41" id="amuseos">NATIONAL GALLERY</a></h2>
+        </div>
+    </div>
+    <!-- <div class="container">
+        <input type="text" id="buscar" placeholder="Buscar">
+        <div class="btn">
+            <i class="fa fa-search"></i>
+        </div>
+    </div> -->
+
+    <footer>
+        <h3 id="titulofooter">BUSCADOR DE OBRAS DE ARTE</h3>
+        <div class="separadorfotos">
+        </div>
+        <div class="footercampos">
+            <div class="campo1footer">
+                <h4>
+                    TEMÁTICAS
+                </h4>
+                <ul>
+                    <li><p class="footerp">pintura</p></li>
+                    <li><p class="footerp">escultura</p></li>
+                    <li><p class="footerp">fotografía</p></li>
+                    <li><p class="footerp">instalacones</p></li>
+                </ul>
+            </div>
+            <div class="campo1footer">
+                <h4>
+                    CONTACTO
+                </h4>
+                <ul>
+                    <li><p class="footerp">buscadorobrasarte@obrasarte.com</p></li>
+                    <li><p class="footerp"><span class="icon-call"></span>923456789</p></li>
+                </ul>
+            </div>
+            <div class="campo1footer">
+                <h4>
+                    ACTIVIDADES
+                </h4>
+                <ul>
+                    <li><p class="footerp">visitas guiadas</p></li>
+                    <li><p class="footerp">accesibilidad</p></li>
+                    <li><p class="footerp">actividades con niños</p></li>
+                    <li><p class="footerp">talleres</p></li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+    <span class="icon-keyboard_arrow_up" ></span>
+</body>
+</html>

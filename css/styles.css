@@ -1,0 +1,927 @@
+*
+{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+img
+{
+    max-width: 100%;
+    display: block;
+    display: inline-block
+}
+
+@font-face {
+    font-family: 'tipografia';
+    src: url(../fonts/EditorialToday-Thin.ttf);
+}
+
+@font-face 
+{
+    font-family: 'tipografia2';
+    src: url(../fonts/EditorialToday-ThinItalic.ttf);
+}
+
+@font-face 
+{
+    font-family: 'tipografia3';
+    src: url(../fonts/Verlag-XLight.ttf);
+}
+
+@font-face 
+{
+    font-family: 'tipografia4';
+    src: url(../fonts/AbrilFatface-Regular.ttf);
+}
+
+.container
+{
+    /* position: absolute; */
+    top: 120px;
+}
+
+.icon-cancel
+{
+    display: none;
+    font-size: 35px;
+}
+
+.icon-menu
+{
+    font-size: 35px;
+}
+
+#usuario
+{
+    color: #050517;
+    font-size: 30px;
+    position: absolute;
+    top: 10px;
+    right: 23px;
+
+}
+
+.bxs-envelope
+{
+    font-size: 27px;
+}
+
+.linav
+{
+    font-weight: 900;
+}
+
+
+header
+{
+    background-color:#7C7C7C;
+    width: 100%;
+    padding: 10px;
+    text-align: center;
+    align-items: center;
+    position: fixed;
+    top:0;
+    z-index: 99;
+    height: 100px;
+}
+
+#titulo
+{
+    font-family: 'tipografia4';
+    font-weight: 900;
+    font-size: 44px;
+    padding-right: 300px;
+    justify-content: left;
+    color: #050517;
+    /* padding-top: 15px; */
+}
+
+.navapartados
+{
+    font-size: 17px;
+    line-height: 1.5;
+}
+
+nav
+{
+    font-family: 'tipografia3';
+    /* padding-left: 20px; */
+    text-align: center;
+    background-color: #7C7C7C;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 9;
+    height: 50px;
+}
+
+.navsumario
+{
+    flex-direction: column;
+    text-align: left;
+    /* padding: 10px; */
+    background-color: #7C7C7C;
+    top: -100px;;
+    left: 0;
+    /* para poder moverlo necesito darle una posicion relativa */
+    position: absolute;
+    justify-content: center;
+    text-align: center;
+    width: 100%;
+    z-index: 10;  
+    display: flex; 
+    height: 180px;
+}
+
+.navapartados:after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    transform: scaleX(0);
+    height: 1px;
+    bottom: 0;
+    left: 0;
+    background-color: 
+    #050517;
+    transform-origin: bottom left;
+    transition: transform 0.25s ease-out;
+  }
+  
+  .navapartados:hover:after {
+    transform: scaleX(1);
+    transform-origin: bottom left;
+  }
+
+a
+{
+    text-decoration: none;
+    display: inline-block;
+    position: relative;
+    color: #050517;
+    font-size:20px
+}
+
+a:hover
+{
+    color: #EEE5E9;
+}
+
+body
+{
+    background: #EEE5E9;
+    margin: 0;
+    padding: 0;
+}
+
+h1
+{
+    font-size: 40px;
+    font-weight: lighter;
+}
+
+h1,p
+{
+    font-family: 'tipografia3';
+    color: #050517;
+}
+
+.textimg2
+{
+    text-align: center;
+    font-family: 'tipografia2';
+}
+
+h2
+{
+    font-family: 'tipografia3';
+    color: #EEE5E9;
+}
+
+h3
+{
+    font-family: 'tipografia3';
+    font-size: 40px;
+    padding: 20px;
+    margin-left: 58px;
+    text-align: center;
+}
+
+h4
+{
+    font-family: 'tipografia3';
+    font-size: 30px;
+    color:#050517;
+}
+
+/* .imagenesaire
+{
+    display: block;
+    display: inline-block
+} */
+
+.h2tresimg
+{
+    color: #050517;
+}
+
+.textimg2_2
+{
+    color: #050517;
+    font-family: 'tipografia2';
+}
+
+.separadorfotos
+{
+    height: 1px;
+    margin: 20px auto 20px auto;
+    z-index: 20;
+    display: flex;
+    width: 80%;
+    background-color: #050517;
+}
+
+#iconos-hamburguesa
+{
+    position: fixed;
+    top: 40px;
+    right: 20px;
+    font-size: 30px;
+    font-weight:80;
+    color: rgb(26, 25, 25);
+}
+
+li
+{
+    list-style: none;
+    /* line-height: 1.5; */
+    padding: 10px 30px 10px 30px;
+}
+
+h1
+{
+    text-align: center;
+    padding: 15px;
+}
+
+p
+{
+    line-height: 1.5;
+    text-align: justify;
+    width: 100%;
+    padding: 10px;
+}
+
+.artlistado
+{
+    position: relative;
+    overflow: hidden;
+    /* border-radius: 10px; */
+    cursor: pointer;
+    line-height: 0;
+}
+
+.artlistado2
+{
+    position: relative;
+    overflow: hidden;
+    /* border-radius: 10px; */
+    cursor: pointer;
+}
+
+/* .artlistado3
+{
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+} */
+
+.itextoimgs
+{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    /* width: 100%;
+    height: 100%; */
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    padding-left: 20px;
+    margin: 20px;
+    /* opacity: 0; */
+    
+}
+
+.itextoimgs2
+{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    /* width: 100%;
+    height: 100%; */
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    padding-left: 20px;
+    margin: 10px;
+    /* opacity: 0; */
+    
+}
+
+.textimg2
+{
+    /* padding: 10px;
+    font-size: 20px; */
+    /* margin: 10px; */
+    justify-content: flex-start;
+    color:#EEE5E9;
+}
+
+/* .itextoimgs>div 
+{
+    background-color: #343D46;
+    border-radius: 10px;
+    margin-left: 50px;
+    margin-right: 50px;
+} */
+
+p
+{
+    font-weight: bold;
+    line-height: 1.8;
+}
+
+.campo1footer
+{
+    text-align: center;
+    padding-bottom: 0px;
+    color: rgb(26, 25, 25);
+}
+
+.iSect3
+{
+    display: flex;
+    flex-direction: row;
+}
+
+.artlistado3
+    {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        height: 100%;
+        
+    }
+
+    .itextoexpo
+    {
+        margin: 20px;
+        text-align: center;
+        justify-content: center;
+        height: 100%;
+        border: 2px solid black;
+    }
+
+    .h2expo
+    {
+        font-size: 40px;
+        text-align: center;
+        justify-content: center;
+    }
+
+#fototienda
+{
+    width: 100%;
+}
+
+footer
+{
+    background-color: #7C7C7C;
+}
+
+.footerp
+{
+    font-family: 'tipografia3';
+    line-height: 1.2;
+    padding: 5px;
+    text-align: center;
+    color: #050517;
+    font-size: 20px;
+}
+
+#imginsectpri
+{
+    line-height: 0;
+}
+
+#titulofooter
+{
+    font-size: 30px;
+    color: #050517;
+    margin: auto;
+    font-weight: 900;
+}
+
+.campo1footer
+{
+    margin-bottom: 20px;
+}
+
+.icon-call
+{
+    font-size: 20px;
+    padding-right: 5px;
+
+}
+
+.icon-keyboard_arrow_down
+{
+    display: none;
+}
+
+.icon-keyboard_arrow_up
+{
+    font-size: 30px;
+    background-color: #EEE5E9;
+    position: fixed;
+    top: 500px;
+    right: 10px;
+    border-radius: 50px;
+    color: #050517;
+    border: 2px solid #050517;
+    cursor: pointer;
+}
+
+.contenedor {
+    display: flex;
+    width: 100%;
+    padding: 4% 2%;
+    box-sizing: border-box;
+    height: 100vh;
+  }
+  
+  .box {
+    flex: 1;
+    overflow: hidden;
+    transition: .5s;
+    margin: 0 2%;
+    box-shadow: 0 20px 30px rgba(0,0,0,.1);
+    line-height: 0;
+  }
+  
+  .box > img {
+    width: 200%;
+    height: calc(100% - 10vh);
+    object-fit: cover; 
+    transition: .5s;
+  }
+  
+  .box > span {
+    font-size: 3.8vh;
+    display: block;
+    text-align: center;
+    height: 10vh;
+    line-height: 2.6;
+  }
+  
+  .box:hover { flex: 1 1 50%; }
+  .box:hover > img {
+    width: 100%;
+    height: 100%;
+  }
+
+  .slidertext
+  {
+    font-family: 'tipografia3';
+    background-color: #7C7C7C;
+    color: #050517;
+  }
+
+/* -------PAGINA BUSCAR-------- */
+
+.container
+{
+    position: relative;
+    min-height: 200PX;
+    max-width: 1000px;
+    margin: 0 auto;
+    /* background-color: red; */
+    padding: 40px 20px;
+}
+
+.container .search-box
+{
+    position: relative;
+    height: 42px;
+    max-width: 400px;
+    /* background-color: green; */
+    margin: 0 auto;
+}
+
+.search-box input
+{
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    outline: none;
+    border: none;
+    background-color: #7C7C7C;
+    padding: 0 15px 0 45px;
+    color: #fff;
+    font-size: 20px;
+    border-radius: 6px;
+
+}
+
+.search-box i
+{
+    position: absolute;
+    z-index: 2;
+    color: #050517;
+    top:50%;
+    left: 15px;
+    transform: translateY(-50%);
+
+}
+
+/* -------texto obras información se muestra------- */
+
+.todoobras li
+{
+    /* text-align: center;
+    align-items: center; */
+    font-family: 'tipografia3';
+    font-size: 40px;
+    font-weight: 900;
+    margin: auto;
+
+}
+
+.todoobras img
+{
+    padding: 10px;
+    /* width: 50%;
+    height: 50%; */
+    align-items: center;
+    text-align: center;
+    justify-content: space-around;
+}
+
+#amuseos
+{
+    color: #EEE5E9;
+}
+
+#amuseos:hover{
+    color: #7C7C7C;
+}
+
+.gallery-container
+{
+     display: grid;
+     grid-template-columns: repeat(3, 1fr);
+     /* esto es para el alto de las filas */
+     grid-auto-rows: 150px;
+     padding: 20px;
+     /* da un espacio entre elementos del grid */
+     grid-gap:10px;
+}
+
+.gallery_item
+{
+    position: relative;
+}
+
+.gallery_title
+{
+     position: absolute;
+     bottom: 0;
+     color: antiquewhite;
+     background: linear-gradient(rgba(255,255,255,0),rgba(0,0,0,1));
+     width: 100%;
+     margin: 0;
+     padding: 5px;
+     text-align: center;
+     top:50%;
+}
+
+.gallery_img
+{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    /* cursor: pointer; */
+    opacity: 1;
+    -webkit-transition: .7s ease-in-out;
+    transition: .7s ease-in-out;
+}
+
+.gallery_img:hover {
+    opacity: .8;
+}
+
+.gallery_item:nth-child(1)
+{
+    grid-column-start: span 3;
+}
+
+.gallery_item:nth-child(2)
+{
+    grid-row-start: span 2;
+}
+
+.gallery_item:nth-child(3)
+{
+    grid-column-start: span 2;
+}
+
+.gallery_item:nth-child(6)
+{
+    grid-column-start: span 3;
+}
+
+#imgmuseos
+    {
+        width: 80%;
+        padding: 10px;
+        
+    }
+
+    .contenedor_obras_museos 
+    {
+        width: 100%;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    body{
+        position: relative;
+       
+        padding-top: 120px;
+        }
+
+    .contenedor
+    {
+        display: none;
+    }
+/* -----P_CLICK_BUSCAR_OBRAS_POR_MUSEO.PHP----------- */
+
+@media screen and (min-width: 768px)
+{
+
+
+    body 
+    {
+        padding-top: 0;  
+    }
+
+    header
+    {
+        position: relative;
+    }
+
+    nav
+    {
+        position: relative;
+    }
+
+    .contenedor_obras_museos 
+    {
+        width: 100%;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
+    }
+
+    #imgmuseos
+    {
+        width: 80%;
+        padding: 20px;
+    }
+
+    #titulo
+    {
+        padding-left: 20px;
+    }
+
+    #titulo
+    {
+        font-size: 60px;
+        padding-top: 1px;
+    }
+
+    a
+    {
+        font-size:28px
+    }
+
+    header
+    {
+        text-align: left;
+        position: relative;
+        padding: 0;
+        top: 0;
+    }
+
+    .bx-user-circle
+    {   
+        color: #050517;
+        font-size: 30px;
+        position: sticky;
+        top: 0;
+        right: 0;
+        display: flex;
+        justify-content: right;
+
+    }
+
+    .navsumario
+    {
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-end;
+        top: 0;
+        height: 20px;
+    }
+
+    .navapartados
+    {
+        font-size: 20px;
+    }
+
+    .insectpri 
+    {
+        display: flex;
+        flex-direction: row;
+        /* align-items: center; */
+        /* justify-content: space-around; */
+        
+    }
+
+    .icon-menu
+    {
+        display: none;
+    }
+
+    #textoinsectpri
+    {
+        width: 40%;
+        padding: 20px;
+        margin-left: 10px;
+    }
+
+    #imginsectpri
+    {
+       width: 60%;
+       /* padding: 30px;
+       margin-top: 30px; */
+    }
+
+    #iSect1
+    {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        /* margin-bottom: 30px; */
+    }
+
+    .artlistado3
+    {
+        display: flex;
+        flex-direction: row;
+        width: 50%;
+        
+    }
+
+    .itextoexpo
+    {
+        margin: 20px;
+        text-align: center;
+        justify-content: center;
+    
+    }
+
+    .h2expo
+    {
+        font-size: 40px;
+        text-align: center;
+        justify-content: center;
+    }
+
+    #iSect2
+    {
+        display: flex;
+        flex-direction: row;
+        position: relative;
+    }
+
+    .imagenes3juntas
+    {
+        width: 480px;
+        height: 100%;
+    }
+
+    #iSect3
+    {
+        display: flex;
+        flex-direction: row;
+        position: relative;
+        width: 100%;
+    }
+
+    .footercampos
+    {
+        display: flex;
+        flex-direction: row;
+        width: 100%;
+    }
+
+    .campo1footer
+    {
+        margin: 0 60px 0 60px;
+        padding: 20px;
+        width: 30%;
+        text-align: center;
+    }
+
+    #imagenajax
+    {
+        width: 30%;
+        height: 30%;
+    }
+
+    .gallery-container
+    {
+        grid-template-columns: repeat(4, 2fr);
+    }
+
+    .gallery_item:nth-child(1)
+    {
+        grid-column-start: span 3;
+    }
+
+    .gallery_item:nth-child(1)
+    {
+        grid-row-start: span 3;
+    }
+
+    .gallery_item:nth-child(2)
+    {
+        grid-row-start: span 3;
+    }
+
+    .gallery_item:nth-child(3)
+    {
+        grid-column-start: span 2;
+    }
+
+    .gallery_item:nth-child(4)
+    {
+        grid-column-start: span 2;
+    }
+
+    .gallery_item:nth-child(4)
+    {
+        grid-row-start: span 2;
+    }
+
+    .gallery_item:nth-child(5)
+    {
+        grid-column-start: span 2;
+    }
+
+    .gallery_item:nth-child(6)
+    {
+        grid-column-start: span 4;
+    }
+
+    .gallery_item:nth-child(6)
+    {
+        grid-row-start: span 4;
+    }
+
+    .container
+    {
+        top: 135%;
+    }
+
+    .contenedor
+    {
+        display:flex;
+    }
+}
+
+@media screen and (min-width: 1024px)
+{
+    #titulo
+    {
+        font-size: 75px;
+    }
+}
+
+

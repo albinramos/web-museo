@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="iconos/style.css">
+    <link rel="stylesheet" href="../../css/styles.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css">
+    <link rel="stylesheet" href="../../css/styles.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script> <!-- Este fichero va siempre debajo de los CSS porque van a modificarlo -->
+    <script src="https://code.jquery.com/ui/1.13.1/jquery-ui.min.js" integrity="sha256-eTyxS0rkjpLEo16uXTS0uVCS4815lc40K2iVpWDvdSY=" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-migrate-3.3.0.min.js" integrity="sha256-wZ3vNXakH9k4P00fNGAlbN0PkpKSyhRa76IFy4V1PYE=" crossorigin="anonymous"></script>
+    <script src="js/prog.js"></script>
+</head>
+<body>
+    <script>
+        $(document).ready(function()
+        {
+            $('#buscar').keyup(function()
+            {
+                /* CON ESTE EMPTY LIMPIO LA PANTALLA DEL CLICK UNA VEZ ESCRIBA ALGO NUEVO */
+                $('.todoobras').empty()
+                /* val es solamente para recoger valores de cajas */
+            var info=$('#buscar').val()
+            if(info!='')
+            {
+                $.ajax(
+                {
+                    type:"post",
+                    url:"r_keyup_buscar_ajax.php",
+                    data:{recogida:info},
+                    success:function(htmlphp)
+                    {
+                        $('.parecidos').html(htmlphp)
+                    }
+                })
+            }
+            else
+            {
+                $('.parecidos').html('')
+
+            }
+            })
+            /* voy a llamar al LI dando la responsabilidad al padre, ya que ese LI no existe en el HTML y para llegar a el tengo que hacerlo así. El document ready va en funcion del html, puedo darles eventos a los que estan en el html, por eso para llegar al li tengo que llegar mediante su padre. SE DENOMINA EVENTO DELEGAR. UL parecidos como padre de li se va a ocupar del click*/
+            $('.parecidos').on("click",'li',function()
+            {
+                /* CON ESTE EMPTY LIMPIO LA PANTALLA DEL KEYUP */
+                $('.parecidos').empty()
+                var id_obra=$(this).children('p.datos').data('id_obra')
+               
+                $.ajax(
+                {
+                    type:"post",
+                    url:"r_click_buscar_ajax.php",
+                    data:{mandoid:id_obra},
+                    success:function(datosobras)
+                    {
+                        $('.todoobras').html(datosobras)
+                        $('#buscar').val('')
+                    }
+                })
+            })
+        })
+    </script>
+<header>
+    <a href="../../index.html" id="titulo">ArtFinder</a>
+    <div id="iconos-hamburguesa">
+        <span class="icon-menu"></span>
+        <span class='icon-cancel'></span>
+    </div>
+</header>
+<nav>
+    <ul class="navsumario">
+        <li><a href="../../index.html" id="navapartados">INICIO</a></li>
+        <li><a href="buscar.html" id="navapartados">ARTFINDER</a></li>
+        <li><a href="#" id="navapartados">SOBRE NOSOTROS</a></li>
+        <li><a href="#" id="navapartados">CONTACTO</a></li>
+    </ul>
+</nav>
+<div>
+    <div class="container">
+        <input type="text" id="buscar" placeholder="Buscar">
+        <div class="btn">
+            <i class="fa fa-search"></i>
+        </div>
+    </div>
+    <div class="separador">
+    </div>
+    <ul class="parecidos"></ul>
+    <ul class="todoobras"></ul>
+    <span class="icon-keyboard_arrow_up" ></span>
+</body>
+</html>
